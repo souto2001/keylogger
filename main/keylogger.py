@@ -8,7 +8,7 @@ import hashlib
 
 SEND_REPORT_EVERY = 60
 """
-    (60 = 1min) /, change according to your preference
+    (60 = 1min), change according to your preference
     or change according to time between reports 
 """
 EMAIL_ADDRESS = 'exemple@notsafe.com'
@@ -127,7 +127,6 @@ padded_message = pad_message(message)
 
 encrypt = cipher.encrypt(padded_message)
 print(encrypt)
-
 # print(cipher.encrypt(padded_message))
 
 if __name__ == '__main__':
